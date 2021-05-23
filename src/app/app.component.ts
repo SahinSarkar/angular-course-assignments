@@ -9,6 +9,6 @@ export class AppComponent {
   username: string;
 
   resetUser(): void {
-    this.username = '';
+    this.username = null;
   }
 }

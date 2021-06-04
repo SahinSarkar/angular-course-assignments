@@ -1,20 +1,17 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12">
-      <h3>Bind it!</h3>
-      <ol>
-        <li>Create three new components: GameControl, Odd and Even</li>
-        <li>The GameControl Component should have buttons to start and stop the game</li>
-        <li>When starting the game, an event (holding a incrementing number) should get emitted each second (ref = setInterval())</li>
-        <li>The event should be listenable from outside the component</li>
-        <li>When stopping the game, no more events should get emitted (clearInterval(ref))</li>
-        <li>A new Odd component should get created for every odd number emitted, the same should happen for the Even Component (on even numbers)</li>
-        <li>Simply output Odd - NUMBER or Even - NUMBER in the two components</li>
-        <li>Style the element (e.g. paragraph) holding your output text differently in both components</li>
-      </ol>
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
+      <app-active-users
+        [users]="activeUsers"
+        (userSetToInactive)="onSetToInactive($event)"></app-active-users>
+      <app-inactive-users
+        [users]="inactiveUsers"
+        (userSetToActive)="onSetToActive($event)"></app-inactive-users>
     </div>
-  </div>
-  <div class="row">
-    <app-gamecontrol></app-gamecontrol>
+    <!--
+      Optimize this app by adding a UsersService which manages the active and inactive users.
+
+      Also add a CounterService which counts the number of active->inactive and inactive->active actions.
+    -->
   </div>
 </div>

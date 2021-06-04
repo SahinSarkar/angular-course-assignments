@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {UsersService} from './users.service';
+import {CounterService} from './counter.service';
 
 @Component({
   selector: 'app-root',
@@ -6,8 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  activeUsers = ['Max', 'Anna'];
-  inactiveUsers = ['Chris', 'Manu'];
+
+  constructor(private userService: UsersService,
+              public ctr: CounterService) {
+  }
+
+  activeUsers = this.userService.activeUsers;
+  inactiveUsers = this.userService.inactiveUsers;
 
   onSetToInactive(id: number) {
     this.inactiveUsers.push(this.activeUsers[id]);

@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {UsersService} from './users.service';
 import {CounterService} from './counter.service';
 
 @Component({
@@ -9,20 +8,6 @@ import {CounterService} from './counter.service';
 })
 export class AppComponent {
 
-  constructor(private userService: UsersService,
-              public ctr: CounterService) {
-  }
-
-  activeUsers = this.userService.activeUsers;
-  inactiveUsers = this.userService.inactiveUsers;
-
-  onSetToInactive(id: number) {
-    this.inactiveUsers.push(this.activeUsers[id]);
-    this.activeUsers.splice(id, 1);
-  }
-
-  onSetToActive(id: number) {
-    this.activeUsers.push(this.inactiveUsers[id]);
-    this.inactiveUsers.splice(id, 1);
+  constructor(public ctr: CounterService) {
   }
 }
